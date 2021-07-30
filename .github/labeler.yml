@@ -1,0 +1,14 @@
+js:
+  - src/**/*
+
+docker:
+  - Dockerfile
+
+env:
+  - .env.*
+
+dependencies:
+  - package*
+
+github/workflows:
+  - .github/workflows/*
