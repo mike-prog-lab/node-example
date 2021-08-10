@@ -10,4 +10,6 @@ USER node
 
 RUN npm ci --production
 
+EXPOSE 5000
+
 ENTRYPOINT ["node", "app"]
