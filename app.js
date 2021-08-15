@@ -14,7 +14,7 @@ app.use(expressLogger);
 app.use(bodyParser.json());
 
 app.get('/version', (req, res) => {
-    res.json('v1.0.0');
+    res.json('v1.1.0');
 });
 
 app.use('/projects', require('./src/routers/project.router'));
