@@ -13,6 +13,10 @@ const app = express();
 app.use(expressLogger);
 app.use(bodyParser.json());
 
+app.get('/version', (req, res) => {
+    res.json('v1.0.0');
+});
+
 app.use('/projects', require('./src/routers/project.router'));
 
 app.use(async (req, res) => {
