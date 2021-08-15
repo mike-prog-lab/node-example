@@ -8,7 +8,7 @@ COPY --chown=node:node . .
 
 USER node
 
-RUN npm ci --production
+RUN npm install --production
 
 EXPOSE 5000
 
