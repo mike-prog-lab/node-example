@@ -39,7 +39,7 @@ app.listen(PORT, async () => {
     if (process.env.NODE_ENV !== 'production') {
         await mongoose.connect(process.env.DB_URI, options);
     } else {
-        const { uri } = await secret.getMongodbUri();
+        const uri = await secret.getMongodbUri();
 
         await mongoose.connect(
             uri,
