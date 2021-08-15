@@ -43,7 +43,10 @@ app.listen(PORT, async () => {
 
         await mongoose.connect(
             uri,
-            options
+            {
+                ...options,
+                sslCA: await secret.getMongodbPem(),
+            }
         )
     }
 
