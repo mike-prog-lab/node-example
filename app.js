@@ -32,8 +32,9 @@ app.use((err, req, res, next) => {
 app.listen(PORT, async () => {
     const options = {
         useNewUrlParser: true,
-        useCreateIndex: true,
         useUnifiedTopology: true,
+        ssl: true,
+        sslValidate: true,
     };
 
     if (process.env.NODE_ENV !== 'production') {
