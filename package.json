@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/mike-prog-lab/node-example#readme",
   "dependencies": {
+    "aws-sdk": "^2.968.0",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "express-exception-handler": "^1.3.5",

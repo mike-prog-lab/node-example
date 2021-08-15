@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser')
 const expressPino = require('express-pino-logger');
 const logger = require('./src/helpers/logger').init();
+const secret = require('./src/services/secret.service');
 
 const expressLogger = expressPino({ logger });
 
@@ -29,11 +30,22 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, async () => {
-    await mongoose.connect(process.env.DB_URI, {
+    const options = {
         useNewUrlParser: true,
         useCreateIndex: true,
         useUnifiedTopology: true,
-    });
+    };
+
+    if (process.env.NODE_ENV !== 'production') {
+        await mongoose.connect(process.env.DB_URI, options);
+    } else {
+        const { uri } = await secret.getMongodbUri();
+
+        await mongoose.connect(
+            uri,
+            options
+        )
+    }
 
     console.log('Application started on port ' + PORT);
 });
